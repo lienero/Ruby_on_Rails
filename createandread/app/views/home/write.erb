@@ -1,0 +1,8 @@
+<form action="/create" method="post">
+<%# 인증토큰%>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %> 
+    제목: <input type="text" name="title"/><br>
+    내용: <input type="text" name="content"/>
+    <input type="submit"/>
+</form>
+<a href="/index">뒤로 돌아가기</a>
