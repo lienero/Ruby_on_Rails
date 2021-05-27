@@ -16,8 +16,17 @@
       <tr>
         <td><%= post.content %></td>
         <td><%= post.title %></td>
+        <%# post은 each 메서드에서 템플릿 변수 @posts로 얻은 하나의 객체이다.
+            매개 변수 url에 모델 객체를 적용하면 id를 사용하여 /posts/id로 가져온다.%>
         <td><%= link_to 'Show', post %></td>
+        <%# edit_post_path와 new_post_path는 routes.rb에서 resources 메서드를 호출할 때 자동으로 사용되는 뷰 헬퍼이다.
+            헬퍼 이름           경로 
+            post_path           /posts 
+            post_path(id)       /posts/:id 
+            new_post_path       /posts/new 
+            edit_post_path(id)  /posts/:id/edit %>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <%# link_to(body, url, [, html_options]) %>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
