@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_28_064508) do
+ActiveRecord::Schema.define(version: 2021_05_28_083505) do
+
+  create_table "bulletins", charset: "utf8", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "posts", charset: "utf8", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "bulletin_id"
+    t.index ["bulletin_id"], name: "index_posts_on_bulletin_id"
   end
 
+  add_foreign_key "posts", "bulletins"
 end

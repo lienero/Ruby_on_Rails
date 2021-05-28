@@ -1,0 +1,19 @@
+<h2>Preview Bulletin</h2>
+<%# show 액션 뷰 템플릿에서는 Title과 Description을 테이블 형식으로 표시하고 Created at이라는 항목을 추가하여 생성한 시각을 보여준다. %>
+<table class='table table-bordered'>
+<tr>
+  <th>Title</th>
+  <td><%= @bulletin.title %></td>
+</tr>
+<tr>
+  <th>Description</th>
+  <td><%= @bulletin.description %></td>
+</tr>
+<tr>
+  <th>Created at</th>
+  <td><%= @bulletin.created_at %></td>
+</tr>
+</table>
+
+<%= link_to 'Edit', edit_bulletin_path(@bulletin), class: 'btn btn-default' %>
+<%= link_to 'Back', bulletins_path, class: 'btn btn-default' %>

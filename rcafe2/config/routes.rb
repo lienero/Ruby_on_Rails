@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bulletins
   # resource_route 모듈을 호출하여 config/routes.rb 파일에 resources :posts 라인을 추가한다. 이와 같이 라우팅을 선언하는 방법을 리소스 라우팅이라고 한다. 
   resources :posts
   # root 라우트 정의는 routes.rb 파일에서 최상위에 위치해야 한다. 

@@ -9,6 +9,7 @@
   </thead>
 
   <tbody>
+  <%# @posts.each do | post | 행의 each 블록에서 각 객체에 대한 정보를 블록 변수 post에 할당한 후 렌더링하게 된다. %>
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.title %></td>
