@@ -1,3 +1,4 @@
-<h2>Editing post</h2>
+<%# "Editing post"라는 제목 대신 글을 수정하는 게시판 이름이 나도오록 수정 %>
+<h2><%= bulletin_name params[:bulletin_id] %></h2>
 
 <%= render 'form' %>

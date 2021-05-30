@@ -1,27 +1,4 @@
-<h2>Listing posts</h2>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Data actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <%# @posts.each do | post | 행의 each 블록에서 각 객체에 대한 정보를 블록 변수 post에 할당한 후 렌더링하게 된다. %>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td>
-          <%= link_to 'Show', (@bulletin.present? ? [post.bulletin, post] : post), class: 'btn btn-default' %>
-          <%= link_to 'Edit', (@bulletin.present? ? edit_bulletin_post_path(post.bulletin, post) : edit_post_path(post)), class: 'btn btn-default' %>
-          <%= link_to 'Destroy', (@bulletin.present? ? [post.bulletin, post] : post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<%= link_to 'New Post', (@bulletin.present? ?  new_bulletin_post_path(@bulletin) : new_post_path), class: 'btn btn-default' %>
+<%# 루비에서는 이중 인용부호 내의 #{expression}을 표현식의 결과로 대체해 준다. %>
+<%# @bulletin.post_type 값이 'bulletin'일 경우 "posts/post_types/bulletin"로 평가되어 
+app/views/posts/post_types/ 디렉토리의 _bulletin.html.erb이라는 partial 템플릿 파일을 render 메소드가 처리하게 된다. %>
+<%= render "posts/post_types/#{@bulletin.post_type}" %>

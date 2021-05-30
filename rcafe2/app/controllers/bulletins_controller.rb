@@ -1,5 +1,5 @@
 class BulletinsController < ApplicationController
-  before_action :set_bulletin, only: %i[ show edit update destroy ]
+  before_action :set_bulletin, only: [:show, :edit, :update, :destroy]
 
   # GET /bulletins or /bulletins.json
   def index
@@ -38,10 +38,10 @@ class BulletinsController < ApplicationController
   def update
     respond_to do |format|
       if @bulletin.update(bulletin_params)
-        format.html { redirect_to @bulletin, notice: "Bulletin was successfully updated." }
+        format.html { redirect_to @bulletin, notice: 'Bulletin was successfully updated.' }
         format.json { render :show, status: :ok, location: @bulletin }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :edit }
         format.json { render json: @bulletin.errors, status: :unprocessable_entity }
       end
     end
@@ -64,6 +64,7 @@ class BulletinsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bulletin_params
-      params.require(:bulletin).permit(:title, :description)
+      # post_type_cd 속성을 추가한다.
+      params.require(:bulletin).permit(:title, :description, :post_type_cd)
     end
 end

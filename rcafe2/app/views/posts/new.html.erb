@@ -1,4 +1,6 @@
-<h2>New post</h2>
+<%# "New post"라는 제목 대신 글을 올리는 게시판 이름이 나오도록 했다. %>
+<h2><%= bulletin_name params[:bulletin_id] %></h2>
+
 <%# render 메소드는 작성한 JSX를 HTML로 변환해 실제 브라우저에 렌더링 %>
 <%# render 'form''은 _form.html.erb 파셜 템플릿을 불러와 render 메소드로 삽입해 준다. %>
 <%= render 'form' %>
