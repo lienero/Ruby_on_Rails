@@ -2,4 +2,5 @@
 <p>: 본 서비스는 "초보자를 위한 레일스 가이드라인"의 샘플 프로젝트입니다.</p>
 <br />
 <%# link_to 헬퍼메소드는 링크태그(<a>)를 만들어 준다. %>
-<%= link_to "글작성", posts_path, class:'btn btn-default' %>
+<%# bulletin_posts_path(1) 는 공지사항 게시판으로 이동하기 위한 것이다 %>
+<%= link_to "글작성", bulletin_posts_path(1), class:'btn btn-default' %>

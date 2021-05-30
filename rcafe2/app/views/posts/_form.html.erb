@@ -1,4 +1,4 @@
-<%= simple_form_for(@post) do |f| %>
+<%= simple_form_for(@bulletin.present? ? [@post.bulletin, @post] : @post) do |f| %>
 <%# new와 edit 뷰 템플릿 파일에서 사용하는 form 파셜 템플릿 파일 %>
   <%= f.error_notification %>
   <div class="form-inputs">
