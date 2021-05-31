@@ -8,10 +8,22 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
+  # def index
+  #   # 삼항 연산자
+  #   # [구문] 조건식 ? 참인 경우 값 : 거짓인 경우 값
+  #   @posts = @bulletin.present? ? @bulletin.posts.all : Post.all
+  # end
   def index
-    # 삼항 연산자
-    # [구문] 조건식 ? 참인 경우 값 : 거짓인 경우 값
-    @posts = @bulletin.present? ? @bulletin.posts.all : Post.all
+    if @bulletin.present?
+      @posts = @bulletin.posts.all
+    else
+      if params[:tag]
+        # Post.tagged_with() : 임의의 태그를 넘겨 주면 해당 태그를 포함하는 post 객체들을 반환
+        @posts = Post.tagged_with(params[:tag])
+      else
+        @posts = Post.all
+      end
+    end
   end
 
   # GET /posts/1 or /posts/1.json
@@ -95,6 +107,7 @@ class PostsController < ApplicationController
     def post_params
       # params.require(:post).permit(:title, :content)
       # params 해시에 picture와 picture_cahe 속성을 추가한다.
-      params.require(:post).permit(:title, :content, :picture, :picture_cache)
+      # post_params 메소드에 :tag_list 속성을 추가한다.
+      params.require(:post).permit(:title, :content, :picture, :picture_cache, :tag_list)
     end
 end

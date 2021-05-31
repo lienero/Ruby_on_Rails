@@ -1,4 +1,15 @@
 <%# 루비에서는 이중 인용부호 내의 #{expression}을 표현식의 결과로 대체해 준다. %>
 <%# @bulletin.post_type 값이 'bulletin'일 경우 "posts/post_types/bulletin"로 평가되어 
 app/views/posts/post_types/ 디렉토리의 _bulletin.html.erb이라는 partial 템플릿 파일을 render 메소드가 처리하게 된다. %>
-<%= render "posts/post_types/#{@bulletin.post_type}" %>
+<% if params["bulletin_id"] %>
+  <%= render "posts/post_types/#{@bulletin.post_type}" %>
+<% else %>
+  <% if params[:tag] %>
+  <h2>Posts tagged with "<%= params[:tag] %>" <small>( <%= @posts.size %> )</small></h2>
+  <% else %>
+  <h2>All Posts <small>( <%= @posts.size %> )</small></h2>
+  <% end %>
+  <ul id='posts_tagged'>
+    <%= render @posts %>
+  </ul>
+<% end %>

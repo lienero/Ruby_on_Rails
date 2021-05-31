@@ -13,5 +13,13 @@ module ApplicationHelper
           else
             flash_type.to_s
         end
-      end
+    end
+
+    def tag_icons(tag_list)
+      tag_list.map do | tag |
+        # CGI::escape() 메소드는 태그에서 사용할 수 있는 특수문자를 이스케이핑하기 위한 것이다
+        "<a href='/posts?tag=#{CGI::escape(tag)}' class='tag'>#{tag}</a>"
+      end.join(', ').html_safe
+    end
+
 end

@@ -6,4 +6,6 @@ class Post < ApplicationRecord
     mount_uploader :picture, PictureUploader
     # 코멘트
     has_many :comments, dependent: :destroy
+    # Post 모델에 대해서 tag_list라는 가상속성을 사용 가능
+    acts_as_taggable
 end
