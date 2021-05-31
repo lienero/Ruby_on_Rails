@@ -93,6 +93,8 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content)
+      # params.require(:post).permit(:title, :content)
+      # params 해시에 picture와 picture_cahe 속성을 추가한다.
+      params.require(:post).permit(:title, :content, :picture, :picture_cache)
     end
 end
