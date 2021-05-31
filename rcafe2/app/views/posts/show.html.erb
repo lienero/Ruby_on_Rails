@@ -1,6 +1,12 @@
 <h2><%= bulletin_name params[:bulletin_id] %></h2>
 
 <table class='table'>
+  <% if @post.bulletin.post_type == :gallery %>
+    <tr>
+      <th>image</th>
+      <td class='image'><%= link_to(image_tag(@post.picture_url(:thumb)), [@post.bulletin, @post]) if @post.picture? %></td>
+    </tr>
+  <% end %> 
 <tr>
   <th>Title</th>
   <td><%= @post.title %></td>
