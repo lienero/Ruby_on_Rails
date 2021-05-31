@@ -1,0 +1,8 @@
+<%# flash 해시는 each 메소드를 이용하여 각각의 요소를 블록으로 넘겨 주어 요소의 키는 type, 
+값은 message 블록변수로 받아 블록 내에서 사용할 수 있다.  %>
+<% flash.each do |type, message| %>
+  <div class="alert <%= bootstrap_class_for(type) %> alert-dismissable fade in">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <%= message %>
+  </div>
+<% end %>
