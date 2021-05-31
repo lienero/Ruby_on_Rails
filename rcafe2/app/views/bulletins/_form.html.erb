@@ -5,7 +5,8 @@
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.input :description, input_html: { rows: 5 } %>
-    <%= f.input :post_type_cd%>
+    <%# enum_option_pairs() 메소드 사용 에러로 인한 사용자 사전 정의 %>
+    <%= f.input :post_type_cd, collection: [['0', 'bulletin'], ['1', 'blog'], ['2', ' gallery']], label_method: :second, value_method: :first%>
   </div>
 
   <div class="form-actions">
