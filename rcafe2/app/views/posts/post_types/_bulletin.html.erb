@@ -12,7 +12,8 @@
   <%# @posts.each do | post | 행의 each 블록에서 각 객체에 대한 정보를 블록 변수 post에 할당한 후 렌더링하게 된다. %>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.title %></td>
+      <%# 해당 글의 코멘트 개수를 표시 %>
+        <td><%= post.title %> <small>( <%= post.comments.size %> )</small></td>
         <td>
           <%= link_to 'Show', (@bulletin.present? ? [post.bulletin, post] : post), class: 'btn btn-default' %>
           <%= link_to 'Edit', (@bulletin.present? ? edit_bulletin_post_path(post.bulletin, post) : edit_post_path(post)), class: 'btn btn-default' %>

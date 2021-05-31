@@ -4,4 +4,6 @@ class Post < ApplicationRecord
     belongs_to :bulletin, optional: true
     # PictureUploader 업로더 클래스를 picture 속성으로 마우트한다.
     mount_uploader :picture, PictureUploader
+    # 코멘트
+    has_many :comments, dependent: :destroy
 end

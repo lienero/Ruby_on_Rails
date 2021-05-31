@@ -12,6 +12,7 @@ $navbar-default-link-hover-bg: black;
 // fa_icon이라는 헬퍼메소드를 지원
 @import "font-awesome";
 @import "posts";
+@import "comments";
 body {
   padding-top: 60px;
 }
